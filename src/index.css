@@ -388,7 +388,6 @@ img {
 }
 
 .nav-item {
-  position: relative;
   flex-shrink: 0;
 }
 
@@ -412,24 +411,32 @@ img {
 }
 
 /* Mega-Menu Panel */
-/* position: fixed centra el panel respecto al viewport; si fuera "absolute"
-   se centraría respecto al nav-item que lo dispara y quedaría desplazado
-   según la posición del enlace en el menú. */
+/* Se posiciona respecto a .header-wrapper (sticky => bloque contenedor), así
+   queda pegado justo debajo de la barra de categorías y centrado con el
+   contenido, sin depender de alturas fijas (la franja superior hacía que el
+   panel tapara los enlaces). Como su bloque contenedor está fuera de
+   .nav-menu, el overflow-x de la barra no lo recorta. */
+.nav-item {
+  position: static;
+}
+
 .mega-menu-panel {
-  position: fixed;
-  top: calc(var(--header-height) + var(--navbar-height));
+  position: absolute;
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(16px);
-  width: 100vw;
-  max-width: var(--max-width);
+  transform: translateX(-50%) translateY(10px);
+  width: min(calc(100% - 48px), calc(var(--max-width) - 48px));
   background-color: var(--white);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.14);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   border: 1px solid var(--border-color);
-  padding: 32px;
+  border-top: 3px solid var(--secondary);
+  padding: 28px 32px 32px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 24px 32px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -437,7 +444,18 @@ img {
   z-index: 105;
 }
 
-.nav-item:hover .mega-menu-panel {
+/* Puente invisible para que el ratón no "pierda" el menú al bajar */
+.mega-menu-panel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
+
+.nav-item:hover .mega-menu-panel,
+.nav-item:has(:focus-visible) .mega-menu-panel {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -446,11 +464,31 @@ img {
 
 /* Móvil, tablet táctil o ventana estrecha: sin :hover fiable, se oculta el
    panel y el enlace de categoría navega directo al pulsarlo (MegaMenu.jsx). */
-@media (max-width: 1024px), (hover: none), (pointer: coarse) {
+/* Solo se oculta en pantallas táctiles (sin hover real): ahí el enlace de
+   categoría navega directo. Con ratón el desplegable sale a cualquier ancho. */
+@media (hover: none), (pointer: coarse) {
   .mega-menu-panel {
     display: none;
   }
+}
 
+/* Ventanas estrechas con ratón: menos columnas para que respire */
+@media (max-width: 1100px) {
+  .mega-menu-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    padding: 22px 24px 26px;
+    width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 720px) {
+  .mega-menu-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px 20px;
+  }
+}
+
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
   /* En una barra con scroll horizontal, "margin-left: auto" empuja el botón
      fuera de la vista cuando las categorías desbordan el ancho disponible. */
   .nav-item-school {
@@ -514,13 +552,46 @@ img {
   border-bottom-color: transparent !important;
 }
 
+/* Ajuste progresivo de la barra de categorías para que quepa entera en
+   portátiles (1024–1300 px) sin cortar el botón de colegios. */
+@media (max-width: 1280px) {
+  .nav-list { gap: 0; }
+  .nav-link { padding: 0 11px; }
+  .nav-link-school { padding: 0 16px; }
+}
+
+@media (max-width: 1180px) {
+  .nav-link { padding: 0 9px; font-size: 12.5px; }
+  .nav-school-extra { display: none; }
+}
+
+/* Tablet/móvil: la barra se desliza en horizontal; un degradado pegado al
+   borde derecho avisa de que hay más categorías. Se hace con un ::after
+   sticky (no con mask-image, que recortaría también el desplegable). */
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
+  .nav-list::after {
+    content: '';
+    position: sticky;
+    right: 0;
+    flex: 0 0 40px;
+    align-self: stretch;
+    margin-left: -8px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--white) 85%);
+    pointer-events: none;
+  }
+}
+
 /* ==========================================
    PAGES CONTAINER & VIEWS
    ========================================== */
 
+/* Solo vertical: "padding: 40px 0 80px" anulaba el padding lateral de
+   .container (el id gana en especificidad) y el contenido quedaba pegado
+   a los bordes de la ventana. */
 #app-viewport {
   flex: 1;
-  padding: 40px 0 80px;
+  padding-top: 40px;
+  padding-bottom: 80px;
 }
 
 .page-view {
@@ -971,7 +1042,12 @@ img {
   padding: 24px;
   height: fit-content;
   position: sticky;
-  top: 100px;
+  /* franja superior + cabecera + barra de categorías (sticky) + aire */
+  top: calc(36px + var(--header-height) + var(--navbar-height) + 20px);
+}
+
+.catalog-filter-toggle {
+  display: none;
 }
 
 .filter-block {
@@ -1929,11 +2005,61 @@ img {
 
 @media (max-width: 1024px) {
   .catalog-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
 
   .catalog-sidebar {
     position: static;
+    display: none;
+  }
+
+  .catalog-sidebar.open {
+    display: block;
+    animation: fadeIn var(--transition-fast);
+  }
+
+  .catalog-filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 48px;
+    padding: 0 18px;
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--neutral-dark);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .catalog-filter-toggle span i {
+    color: var(--secondary);
+    margin-right: 6px;
+  }
+
+  .catalog-filter-toggle em {
+    font-style: normal;
+    font-size: 12px;
+    background: var(--secondary);
+    color: var(--white);
+    border-radius: var(--radius-full);
+    min-width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+  }
+
+  .catalog-filter-chevron {
+    margin-left: auto;
+    font-size: 12px;
+    transition: transform var(--transition-fast);
+  }
+
+  .catalog-filter-toggle.open .catalog-filter-chevron {
+    transform: rotate(180deg);
   }
 
   .detail-layout {
@@ -1962,7 +2088,8 @@ img {
 
 @media (max-width: 768px) {
   #app-viewport {
-    padding: 24px 0 60px;
+    padding-top: 24px;
+    padding-bottom: 60px;
   }
 
   .main-header {
@@ -1972,18 +2099,30 @@ img {
     gap: 16px;
   }
 
-  .logo img {
-    height: 32px;
-  }
-
   .header-actions {
     gap: 10px;
   }
 
   .search-container {
     order: 3;
+    flex: 1 1 100%;
     width: 100%;
     max-width: 100%;
+  }
+
+  .main-header {
+    padding: 12px 0 14px;
+    gap: 12px;
+  }
+
+  .logo img {
+    height: 44px;
+  }
+
+  .header-action-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
   }
 
   .search-bar {
@@ -2079,7 +2218,21 @@ img {
   }
 
   .category-quick-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .category-quick-card {
+    padding: 18px 12px;
+  }
+
+  .category-quick-card h4 {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+
+  .category-quick-card p {
+    display: none;
   }
 
   .products-grid {

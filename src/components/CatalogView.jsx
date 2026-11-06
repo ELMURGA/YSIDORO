@@ -15,6 +15,7 @@ export default function CatalogView({
   const [stockFilters, setStockFilters] = useState(['in-stock']);
   const [priceFilters, setPriceFilters] = useState([]);
   const [sortValue, setSortValue] = useState('relevance');
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   function toggleStock(value) {
     setStockFilters((prev) => (prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]));
@@ -75,7 +76,19 @@ export default function CatalogView({
         <SchoolListResult schoolFilter={schoolFilter} onAddToCart={onAddToCart} onAddMany={onAddMany} />
       ) : (
         <div className="catalog-layout">
-          <aside className="catalog-sidebar">
+          <button
+            type="button"
+            className={`catalog-filter-toggle ${filtersOpen ? 'open' : ''}`}
+            aria-expanded={filtersOpen}
+            onClick={() => setFiltersOpen((v) => !v)}
+          >
+            <span><i className="fa-solid fa-sliders" /> Filtros</span>
+            {stockFilters.length + priceFilters.length > 0 && (
+              <em>{stockFilters.length + priceFilters.length}</em>
+            )}
+            <i className="fa-solid fa-chevron-down catalog-filter-chevron" />
+          </button>
+          <aside className={`catalog-sidebar ${filtersOpen ? 'open' : ''}`}>
             <div className="filter-block">
               <h4 className="filter-title">Disponibilidad</h4>
               <ul className="filter-list">

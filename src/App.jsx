@@ -7,6 +7,15 @@ import CartDrawer from './components/CartDrawer.jsx';
 import Footer from './components/Footer.jsx';
 import InfoPage from './components/InfoPage.jsx';
 import { useCart } from './hooks/useCart.js';
+import CheckoutView from './shop/CheckoutView.jsx';
+import ConfirmationView from './shop/ConfirmationView.jsx';
+import AuthView from './shop/AuthView.jsx';
+import AccountView from './shop/AccountView.jsx';
+import TrackingView from './shop/TrackingView.jsx';
+import StoresView from './shop/StoresView.jsx';
+import BusinessView from './shop/BusinessView.jsx';
+import FavoritesView from './shop/FavoritesView.jsx';
+import { Floating } from './shop/Floating.jsx';
 
 export default function App() {
   const [view, setView] = useState('home'); // 'home' | 'catalog' | 'detail' | 'info'
@@ -18,6 +27,8 @@ export default function App() {
   const [schoolFilter, setSchoolFilter] = useState(null);
   const [cartOpen, setCartOpen] = useState(false);
   const [previousView, setPreviousView] = useState('home');
+  const [user, setUser] = useState(() => { try { return sessionStorage.getItem('isidoro_user') ? { name: 'Laura Gómez Prieto', email: 'laura.gomez@example.com', phone: '600 11 22 33' } : null; } catch { return null; } });
+  const [lastOrder, setLastOrder] = useState(null);
 
   const { cart, addToCart, addManyToCart, updateQty, removeItem, clearCart, totalItems, totalPrice } = useCart();
 
@@ -87,11 +98,43 @@ export default function App() {
     setCartOpen(true);
   }
 
+  function go(nextView) {
+    setPreviousView(['home', 'catalog'].includes(view) ? view : previousView);
+    setView(nextView);
+    window.scrollTo(0, 0);
+  }
+
   function handleCheckout() {
     if (cart.length === 0) return;
-    alert('¡Pedido Tramitado!\n(Simulación de checkout para el cliente Isidoro)');
-    clearCart();
     setCartOpen(false);
+    go('checkout');
+  }
+
+  function handlePlaced(order) {
+    setLastOrder(order);
+    clearCart();
+    setView('confirmation');
+    window.scrollTo(0, 0);
+  }
+
+  function handleLogin() {
+    try { sessionStorage.setItem('isidoro_user', '1'); } catch { /* sin almacenamiento */ }
+    setUser({ name: 'Laura Gómez Prieto', email: 'laura.gomez@example.com', phone: '600 11 22 33' });
+    go('account');
+  }
+
+  function handleLogout() {
+    try { sessionStorage.removeItem('isidoro_user'); } catch { /* sin almacenamiento */ }
+    setUser(null);
+    goHome();
+  }
+
+  function handleOpenList(school, course) {
+    handleSchoolFinderSubmit({ school, course });
+  }
+
+  function handleRepeat(items) {
+    handleAddMany(items.map((it) => ({ product: it.product, quantity: it.qty })));
   }
 
   return (
@@ -104,6 +147,11 @@ export default function App() {
         onSelectSubcategory={handleSelectSubcategory}
         cartCount={totalItems}
         onOpenCart={() => setCartOpen(true)}
+        user={user}
+        onAccount={() => go(user ? 'account' : 'auth')}
+        onFavorites={() => go('favorites')}
+        onNavigate={(v) => go(v)}
+        onShopSchool={() => { goHome(); setTimeout(() => document.getElementById('material-finder')?.scrollIntoView({ behavior: 'smooth' }), 80); }}
       />
 
       <main className="container" id="app-viewport">
@@ -113,6 +161,8 @@ export default function App() {
             onSelectProduct={handleSelectProduct}
             onAddToCart={handleAddToCart}
             onSelectCategory={handleSelectCategory}
+            onAddMany={handleAddMany}
+            onBusiness={() => go('business')}
           />
         )}
 
@@ -136,6 +186,7 @@ export default function App() {
               window.scrollTo(0, 0);
             }}
             onAddToCart={handleAddToCart}
+            onSelectProduct={handleSelectProduct}
           />
         )}
 
@@ -148,9 +199,25 @@ export default function App() {
             }}
           />
         )}
+
+        {view === 'checkout' && (
+          <CheckoutView cart={cart} subtotal={totalPrice} user={user} onBack={(t) => (t ? go(t) : goHome())} onPlaced={handlePlaced} onLogin={() => go('auth')} />
+        )}
+        {view === 'confirmation' && (
+          <ConfirmationView order={lastOrder} hasUser={!!user} onTrack={() => go('tracking')} onShop={goHome} onAccount={() => go('auth')} />
+        )}
+        {view === 'auth' && <AuthView onLogin={handleLogin} onBack={goHome} />}
+        {view === 'account' && (
+          <AccountView onLogout={handleLogout} onTrack={() => go('tracking')} onRepeat={handleRepeat} onOpenList={handleOpenList} onOpenFavorites={() => go('favorites')} />
+        )}
+        {view === 'tracking' && <TrackingView lastOrderId={lastOrder?.id} />}
+        {view === 'stores' && <StoresView />}
+        {view === 'business' && <BusinessView onAddMany={handleAddMany} />}
+        {view === 'favorites' && <FavoritesView onSelectProduct={handleSelectProduct} onAddToCart={handleAddToCart} onShop={goHome} />}
       </main>
 
-      <Footer onNavigate={handleNavigateInfo} />
+      <Footer onNavigate={handleNavigateInfo} onGo={go} />
+      <Floating />
 
       <CartDrawer
         cart={cart}
@@ -160,6 +227,7 @@ export default function App() {
         onRemoveItem={removeItem}
         onCheckout={handleCheckout}
         totalPrice={totalPrice}
+        onShopMore={() => setCartOpen(false)}
       />
     </>
   );

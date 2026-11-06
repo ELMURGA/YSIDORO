@@ -1,9 +1,10 @@
+import { TrustBar, CampaignBanner, PacksSection, BottomBand } from '../shop/HomeExtras.jsx';
 import SchoolFinder from './SchoolFinder.jsx';
 import ProductCard from './ProductCard.jsx';
 import { PRODUCTS } from '../data/products.js';
 import { QUICK_CATEGORIES } from '../data/categories.js';
 
-export default function HomeView({ onSubmitSchoolFinder, onSelectProduct, onAddToCart, onSelectCategory }) {
+export default function HomeView({ onSubmitSchoolFinder, onSelectProduct, onAddToCart, onSelectCategory, onAddMany, onBusiness }) {
   const featured = PRODUCTS.filter((p) => p.featured).slice(0, 4);
 
   return (
@@ -41,7 +42,9 @@ export default function HomeView({ onSubmitSchoolFinder, onSelectProduct, onAddT
         </div>
       </section>
 
+      <TrustBar />
       <SchoolFinder onSubmit={onSubmitSchoolFinder} />
+      <CampaignBanner onStart={() => document.getElementById('material-finder')?.scrollIntoView({ behavior: 'smooth' })} />
 
       <section style={{ marginBottom: 50 }}>
         <h3 className="section-title">Categorías Populares</h3>
@@ -72,6 +75,9 @@ export default function HomeView({ onSubmitSchoolFinder, onSelectProduct, onAddT
           ))}
         </div>
       </section>
+
+      <PacksSection onAddMany={onAddMany} />
+      <BottomBand onBusiness={onBusiness} />
     </div>
   );
 }

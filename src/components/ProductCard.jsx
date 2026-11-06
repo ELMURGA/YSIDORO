@@ -1,3 +1,5 @@
+import { useFavorites } from '../hooks/useFavorites.js';
+
 function StockStatus({ stock, compact }) {
   if (stock === 'in-stock') {
     return (
@@ -22,9 +24,13 @@ function StockStatus({ stock, compact }) {
 
 export default function ProductCard({ product, onSelect, onAddToCart }) {
   const isOut = product.stock === 'out-of-stock';
+  const { isFav, toggle } = useFavorites();
 
   return (
     <article className="product-card">
+      <button type="button" className={`sh-fav ${isFav(product.id) ? 'on' : ''}`} aria-pressed={isFav(product.id)} aria-label="Guardar en favoritos" onClick={(e) => { e.stopPropagation(); toggle(product.id); }}>
+        <i className={isFav(product.id) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'} />
+      </button>
       {product.stock === 'low-stock' && (
         <span className="product-badge" style={{ backgroundColor: 'var(--warning)' }}>
           Últimas uds.

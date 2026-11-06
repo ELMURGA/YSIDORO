@@ -3,3 +3,4 @@ dist
 .env
 studio/.sanity
 .DS_Store
+.playwright-mcp

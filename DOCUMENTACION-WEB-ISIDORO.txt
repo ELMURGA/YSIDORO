@@ -1,0 +1,586 @@
+=====================================================================
+DOCUMENTO PARA GENERAR EL PDF DE PRESENTACIÓN
+Nueva web y panel de gestión · Librería Papelería Isidoro / IPAPEL
+=====================================================================
+
+---------------------------------------------------------------------
+0. INSTRUCCIONES PARA QUIEN GENERE EL PDF (Claude)
+---------------------------------------------------------------------
+Este texto es la fuente completa. Con él hay que crear un PDF visual,
+atractivo y fácil de leer para el DUEÑO de la papelería (Isidoro), que
+NO es técnico. Debe sentirse como una presentación comercial, no como un
+manual técnico.
+
+Reglas de estilo:
+- Idioma: español, tono cercano y claro. Nada de jerga informática; si
+  hace falta una palabra técnica, explicarla en una frase.
+- Diseño: A4 vertical, mucho aire, una idea por página o por bloque.
+  Colores de la marca: azul real (#1c2c8a / #1a2b7a), rosa (#fb13bf),
+  fondo claro (#f4f6fb), texto oscuro (#1c2236). Tipografías: Outfit
+  (títulos) y Plus Jakarta Sans (texto).
+- Visuales: usar iconos, tarjetas, tablas comparativas "Antes / Ahora",
+  diagramas de flujo sencillos y mockups esquemáticos de pantallas.
+  Donde se indique [VISUAL], preparar un dibujo o diagrama.
+- Portada con el título "Tu nueva tienda online y tu panel de control" y
+  el subtítulo "Todo tu negocio —tres tiendas y la web— en un solo sitio".
+- Incluir índice, numerar secciones y cerrar con una página de
+  "Próximos pasos".
+- No inventar precios, plazos ni cifras reales de ventas. Todos los
+  números que aparecen en la demostración son de ejemplo y así debe
+  indicarse una vez en el PDF ("datos de ejemplo").
+- El apartado 8 (conexión con el TPV de las tiendas) es el que más debe
+  lucirse: dedicarle varias páginas, con diagramas.
+
+Datos de contexto:
+- Negocio: Isidoro Suministros a Oficinas S.L. (marca IPAPEL.es).
+  Librería, papelería, material escolar, libros de texto por colegios,
+  oficina, informática, juguetes y regalo.
+- Tres ubicaciones: DOS TIENDAS en la ciudad (Tienda Centro y Tienda
+  Plaza) y UNA NAVE GRANDE que funciona a la vez como ALMACÉN y como
+  TIENDA/OUTLET.
+- Web actual: https://ipapel.es/isidoro/cpweb (ver apartado 1).
+
+---------------------------------------------------------------------
+1. PUNTO DE PARTIDA: QUÉ HAY HOY Y POR QUÉ MEJORARLO
+---------------------------------------------------------------------
+La web actual funciona, pero tiene limitaciones que cuestan ventas:
+
+[VISUAL: tabla "Web actual" frente a "Web nueva"]
+
+Web actual                                  | Web nueva
+--------------------------------------------|----------------------------------------------
+Diseño antiguo, botones hechos con imágenes | Diseño moderno, rápido, adaptado al móvil
+Buscador poco visible                       | Buscador con sugerencias mientras escribes
+Direcciones de páginas ilegibles            | Direcciones limpias, mejores para Google
+Errores de tildes y caracteres              | Texto correcto y accesible
+Sin información de envíos ni contacto       | Envíos, devoluciones, tiendas y contacto claros
+Compra de colegios: un enlace escondido     | Buscador de colegio > curso > lista, con compra en un clic
+Sin cuenta de cliente visible               | Cuenta con pedidos, hijos, facturas y favoritos
+Sin seguimiento de pedido                   | Seguimiento paso a paso, con avisos
+Sin recogida en tienda                      | Recogida en las 3 ubicaciones en 2 horas
+Sin zona para empresas                      | Isidoro Empresas: tarifas, pedido rápido, factura
+Gestión interna limitada                    | Panel de control completo (17 áreas)
+
+Objetivo: que comprar sea fácil para las familias y para las empresas,
+y que gestionar el negocio sea cómodo para el propietario y su equipo.
+
+---------------------------------------------------------------------
+2. VISIÓN GENERAL
+---------------------------------------------------------------------
+El proyecto tiene DOS partes que trabajan juntas:
+
+  A) LA TIENDA ONLINE (lo que ve el cliente).
+  B) EL PANEL DE GESTIÓN (lo que usa el propietario y su equipo).
+
+[VISUAL: diagrama sencillo: Clientes -> Tienda online -> Panel de
+gestión <- Equipo (tiendas, nave, oficina)]
+
+Y una TERCERA pieza opcional para el final: la CONEXIÓN CON EL TPV de
+las tiendas (apartado 8), que une el programa de caja con la web y el
+panel para tener el stock de todo el negocio en un único sitio.
+
+Importante: lo que se enseña ahora es una DEMOSTRACIÓN FUNCIONAL. Todas
+las pantallas se pueden recorrer y probar, pero todavía no hay base de
+datos real: los productos, pedidos y clientes son datos de ejemplo. La
+base de datos y las conexiones reales se construyen al final, una vez
+el propietario apruebe el diseño y el funcionamiento (ver apartado 10).
+
+Cómo ver la demostración:
+- Tienda online: dirección principal de la demo.
+- Panel de gestión: añadir "#/admin" al final de la dirección (también
+  hay un botón flotante "Panel del propietario" en la tienda y un
+  enlace "Ver la tienda online" dentro del panel).
+
+---------------------------------------------------------------------
+3. LA TIENDA ONLINE: RECORRIDO DEL CLIENTE
+---------------------------------------------------------------------
+
+3.1 PÁGINA DE INICIO
+- Barra superior con avisos útiles: envío gratis desde 49 €, recogida
+  en tienda en 2 horas, y accesos directos a "Listas de colegios",
+  "Seguir pedido", "Tiendas", "Empresas" y teléfono.
+- Cabecera con buscador, favoritos (corazón), cuenta y carrito.
+- Menú por categorías (Papelería, Escritura, Mochilas, Libros,
+  Manualidades, Juguetes, Regalos, Tecnología).
+- Portada destacada de campaña (por ejemplo "Vuelta al Cole").
+- Barra de confianza: envío gratis, recogida en 2 horas, pago seguro,
+  devolución fácil.
+- BUSCADOR DE COLEGIO: el cliente elige municipio, colegio y curso y ve
+  la lista de material que ha pedido el profesorado. (Ver 3.3.)
+- Banner de campaña con cuenta atrás ("Pide ahora y recíbelo antes de
+  que empiecen las clases").
+- Categorías populares y productos destacados.
+- Kits "Vuelta al cole": packs cerrados por curso con descuento
+  (Infantil 3 años, 1º-2º Primaria, 3º-4º, Secundaria, Pack Oficina
+  Home-Working). Un clic añade el kit al carrito.
+- Bloque "Empresas" y suscripción a novedades por correo.
+- Botón flotante de WhatsApp y aviso de cookies.
+
+3.2 CATÁLOGO, BUSCADOR Y FICHA DE PRODUCTO
+- Navegación por categorías y subcategorías con megamenú.
+- Buscador con sugerencias mientras se escribe.
+- Cada producto muestra foto, nombre, referencia, precio con IVA y
+  estado del stock (en stock, últimas unidades, agotado).
+- Corazón para guardar en FAVORITOS (sirve para listas de deseos y
+  regalos).
+- Ficha de producto con:
+    * Fotos, descripción, precio con IVA y precio base.
+    * DISPONIBILIDAD POR TIENDA: cuántas unidades hay en Tienda Centro,
+      Tienda Plaza y la Nave ("Disponible", "Quedan 3", "Sin stock").
+      [Esta información se alimenta automáticamente cuando se conecta el
+      TPV, ver apartado 8.]
+    * Plazos de envío, recogida gratuita y devoluciones.
+    * Opiniones de clientes con estrellas ("compra verificada").
+    * "También te puede interesar" (productos relacionados).
+
+3.3 COMPRA POR COLEGIO (EL GRAN DIFERENCIAL)
+- El cliente elige Municipio > Colegio > Curso.
+- Ve la lista completa del curso. Cada línea es una NECESIDAD (por
+  ejemplo "Goma de borrar") con un producto sugerido, y puede cambiarlo
+  por otro de la misma categoría si prefiere otra marca o precio.
+- Botón "Añadir toda la lista al carrito".
+- Para las familias es mucho más cómodo que montar la compra a mano.
+
+3.4 CARRITO
+- Cajón lateral que se abre sin salir de la página.
+- Cambiar cantidades, quitar artículos, ver el subtotal.
+- BARRA DE ENVÍO GRATIS: "Te faltan X € para el envío gratis" (anima a
+  comprar más).
+- Botones "Ir a pagar" y "Seguir comprando".
+
+3.5 FINALIZAR COMPRA (3 PASOS, SIN OBLIGAR A CREAR CUENTA)
+Paso 1 · Datos: nombre, correo, teléfono (para avisar por WhatsApp). Se
+  puede pedir factura a nombre de empresa (CIF).
+Paso 2 · Entrega, a elegir:
+    - Envío a domicilio (gratis desde 49 €).
+    - Recogida en tienda: elige entre Tienda Centro, Tienda Plaza o la
+      Nave; la web indica si todo el pedido estará disponible hoy o si
+      parte llegará en 24 h.
+    - Entrega en el colegio (para listas escolares).
+Paso 3 · Pago: tarjeta, Bizum, PayPal, transferencia o pagar al recoger
+  en tienda. Aceptar condiciones y pagar.
+- Resumen del pedido siempre visible, con campo de CUPÓN (ejemplo:
+  COLE10, BIENVENIDA5).
+- En la demostración no se realiza ningún cobro real.
+
+3.6 CONFIRMACIÓN DEL PEDIDO
+- Mensaje de agradecimiento, número de pedido y total.
+- "Qué pasa ahora" paso a paso (confirmación, preparación, aviso,
+  recogida o envío).
+- Botones "Seguir mi pedido" y "Seguir comprando"; invitación a crear
+  cuenta en un clic.
+
+3.7 SEGUIMIENTO DE PEDIDO
+- Con número de pedido y correo, el cliente ve una línea de tiempo:
+  recibido, pagado, preparando, listo para recoger / enviado, entregado.
+- Si es recogida, aparece "Tu pedido te espera en [tienda]".
+
+3.8 CUENTA DEL CLIENTE
+- Entrar o crear cuenta (con opción "soy empresa o autónomo").
+- Resumen: pedidos, puntos de fidelidad, hijos con lista guardada.
+- MIS PEDIDOS: historial, seguimiento y botón REPETIR PEDIDO.
+- MIS HIJOS Y LISTAS: cada hijo con su colegio y curso. Al año
+  siguiente, "Ver la lista y comprar" o "Pasar al curso siguiente". La
+  web avisa si el colegio ha cambiado algo de la lista.
+- Favoritos, direcciones, facturas en PDF y datos personales (con
+  preferencias de avisos por WhatsApp y correo).
+
+3.9 NUESTRAS TIENDAS
+- Ficha de las tres ubicaciones: dirección, teléfono, horario, cómo
+  llegar y llamar, y aviso de recogida de pedidos web en 2 horas.
+- Guía de "qué tienda me conviene": Centro y Plaza para atención
+  cercana y recogida rápida; la Nave para todo el catálogo, compras
+  grandes, outlet y recogida de listas completas.
+- Formulario de contacto.
+
+3.10 ISIDORO EMPRESAS (VENTA A PROFESIONALES)
+- Ventajas: tarifa profesional, factura con pago a 30 días, pedidos
+  recurrentes (folios, tóner), varios usuarios por empresa, tóner por
+  modelo de impresora.
+- PEDIDO RÁPIDO POR REFERENCIAS: el cliente pega una lista
+  ("referencia x cantidad"), la web comprueba cada línea y añade todo al
+  carrito de una vez. También admite Excel/CSV.
+- Solicitud de alta de empresa (el propietario la aprueba en el panel).
+
+3.11 OTRAS PÁGINAS
+- Quiénes somos, envíos, devoluciones, garantías, bases de promociones,
+  contacto, aviso legal, cookies y tratamiento de datos.
+
+---------------------------------------------------------------------
+4. EL PANEL DE GESTIÓN: RECORRIDO COMPLETO
+---------------------------------------------------------------------
+Es la parte donde el propietario y su equipo controlan TODO el negocio
+sin depender de nadie. Se usa desde el ordenador, la tablet o el móvil.
+Se entra con correo y contraseña. Menú lateral con 17 áreas, agrupadas
+así:
+
+[VISUAL: mockup del menú lateral con sus grupos]
+
+--- GRUPO "DÍA A DÍA" ---
+
+4.1 PANEL DE CONTROL (la pantalla de inicio)
+- Ventas de hoy (web y tiendas), pedidos por preparar, ticket medio y
+  conversión de la web.
+- Gráfico de ventas de los últimos 30 días y reparto por canal (Web,
+  Tienda Centro, Tienda Plaza, Nave).
+- Seguimiento de la campaña escolar: listas pedidas, colegios con lista
+  publicada, pedidos a recoger en tienda.
+- "Necesita tu atención": stock bajo, mensajes sin responder, reseñas
+  por aprobar, facturas de empresa que vencen, solicitudes de alta.
+- Más vendidos, últimos pedidos y productos a reponer.
+
+4.2 PEDIDOS
+- Lista de todos los pedidos de la web y de los encargos por teléfono.
+- Pestañas por estado: Nuevo, Pagado, Preparando, Listo para recoger,
+  Enviado, Entregado, Devoluciones. Buscador y filtro por tipo de
+  entrega.
+- Ficha del pedido: cliente, entrega, pago, artículos, notas del
+  cliente y línea de tiempo.
+- Acciones en un clic: avanzar de estado (el cliente recibe aviso
+  automático), imprimir albarán y etiqueta, generar factura, avisar por
+  WhatsApp, reembolsar total o parcialmente.
+
+4.3 PREPARACIÓN DE PEDIDOS (PARA EL ALMACÉN)
+- Tres vistas: por pedido (lista con casillas), TOTAL POR PRODUCTO
+  (cuánto sacar de las estanterías sumando todos los pedidos) y POR
+  COLEGIO (para preparar lotes).
+- Hoja de picking imprimible y versión para el móvil del almacén.
+- Al completar un pedido se marca como listo y se avisa al cliente.
+
+4.4 MENSAJES Y RESEÑAS
+- Bandeja única: formulario web, WhatsApp, correo y formulario de
+  empresas. Con respuesta sugerida.
+- Moderación de opiniones de productos: aprobar, rechazar o responder
+  en público.
+
+--- GRUPO "CATÁLOGO E INVENTARIO" ---
+
+4.5 PRODUCTOS
+- Listado con foto, referencia, código de barras, categoría, precio,
+  margen, stock total y visibilidad en la web.
+- Filtros por categoría y estado (publicado, oculto, stock bajo).
+- Acciones en bloque: cambiar precios por porcentaje, ocultar, añadir
+  a oferta.
+- Editor completo por pestañas: General, Precios (con cálculo
+  automático de margen y beneficio, IVA 21/10/4 %, precio de empresa y
+  oferta con fechas), Stock por ubicación, Imágenes, Listas de colegios
+  donde aparece, y Buscadores (Google).
+
+4.6 STOCK POR TIENDA
+- Tarjetas con las unidades y el valor a coste de cada ubicación (Tienda
+  Centro, Tienda Plaza, Nave) y del total del negocio.
+- Tabla con las existencias de cada artículo en cada ubicación, con
+  botones + y − para ajustar.
+- TRANSFERIR entre tiendas con un clic (por ejemplo, de la Nave a la
+  Tienda Plaza), con registro del movimiento.
+- Alertas de reposición cuando algo baja de su mínimo.
+- Historial de movimientos: ventas, recepciones, transferencias,
+  devoluciones y ajustes.
+- Inventario y recepción de mercancía.
+- Reglas de la web: de dónde sale el stock que ve el cliente (suma de
+  las tres ubicaciones, solo la Nave, o una reserva fija).
+
+4.7 PROVEEDORES Y COMPRAS
+- Fichas de proveedores (contacto, plazo de entrega, qué suministran,
+  pedidos pendientes).
+- Pedidos a proveedor con estados (borrador, enviado, parcialmente
+  recibido, recibido). Al recibir, el stock sube solo en la ubicación
+  de destino.
+- REPOSICIÓN SUGERIDA: lista automática de lo que hay que pedir según
+  mínimos y ventas de los últimos 30 días.
+
+4.8 IMPORTAR / EXPORTAR
+- Subir cientos de productos de golpe desde Excel o CSV, con vista
+  previa de qué se creará, qué se actualizará y qué filas tienen error.
+- Exportar catálogo, stock por tienda, pedidos, clientes, listas de
+  colegios y facturas.
+- Historial de importaciones.
+
+--- GRUPO "CAMPAÑA ESCOLAR" ---
+
+4.9 COLEGIOS Y LISTAS (EL CORAZÓN DE LA CAMPAÑA)
+- Todos los colegios con su estado (lista publicada o pendiente de
+  recibir), pedidos, familias y facturación.
+- Editor de la lista de cada curso: necesidades, producto sugerido,
+  stock y precio, con el total de la lista.
+- AVISO DE STOCK: si algún artículo de una lista tiene poco stock, se
+  avisa antes de que las familias empiecen a comprar.
+- IMPORTAR LISTA DESDE PDF O EXCEL: se sube el documento que manda el
+  colegio, el sistema reconoce los artículos y los empareja con el
+  catálogo; el propietario solo revisa los casos dudosos.
+- DUPLICAR AL CURSO SIGUIENTE: las listas del año pasado se copian y
+  se modifican solo las diferencias.
+- Estadísticas por colegio, enlace directo y código QR para carteles y
+  envío al AMPA.
+
+--- GRUPO "CLIENTES Y VENTAS" ---
+
+4.10 CLIENTES Y EMPRESAS
+- Familias, empresas con tarifa propia y AMPAs.
+- Ficha: datos, hijos y colegios, pedidos, total gastado, etiquetas y
+  notas internas.
+- Empresas: CIF, tarifa asignada y condiciones de pago.
+- Bandeja de SOLICITUDES DE ALTA de empresas para aprobar o rechazar.
+
+4.11 PROMOCIONES Y PACKS
+- Cupones (porcentaje, importe fijo, envío gratis) con límite de usos y
+  caducidad; se activan y desactivan con un interruptor.
+- Ofertas programadas con fecha de inicio y fin.
+- Packs y kits (contenido, precio, descuento y ventas).
+- Puntos de fidelidad y tarjetas regalo.
+
+4.12 MARKETING Y PORTADA
+- Campañas por correo o WhatsApp a segmentos (familias con hijos,
+  empresas, carritos abandonados, clientes VIP, AMPAs...), con
+  estadísticas de apertura, clics y VENTAS GENERADAS.
+- Automatizaciones: carrito abandonado, pedido listo para recoger, aviso
+  para pedir la lista del curso siguiente, "avísame cuando haya stock",
+  petición de opinión tras la compra, reposición de consumibles para
+  empresas.
+- Portada y banners: cambiar la portada de la web con fechas de
+  inicio y fin, sin llamar a nadie.
+
+--- GRUPO "ADMINISTRACIÓN" ---
+
+4.13 FACTURAS Y CONTABILIDAD
+- Facturas automáticas con descarga en PDF, rectificativas y cobros
+  pendientes (con botón para reclamar).
+- Informe de IVA por tipo (21 %, 10 %, 4 %).
+- "Enviar a la gestoría": un clic genera el paquete con facturas, libro
+  de facturas en Excel y resumen de IVA; se puede programar cada
+  trimestre.
+
+4.14 INFORMES
+- Ventas por mes (se aprecia el pico de septiembre), por tienda y web,
+  por categoría, colegios que más facturan, margen bruto y rotación de
+  stock.
+- Productos sin movimiento con botón para crear una oferta de
+  liquidación.
+
+4.15 EQUIPO Y PERMISOS
+- Cada persona ve solo lo que necesita. Roles: Propietario,
+  Encargado/a de tienda, Dependiente, Almacén y Contabilidad/Gestoría.
+- Tabla de permisos por área.
+- REGISTRO DE ACTIVIDAD: quién cambió qué y cuándo (precios, stock,
+  listas, devoluciones...).
+
+4.16 AJUSTES
+- Datos de la empresa, tiendas y horarios, tarifas de envío por zonas,
+  otras formas de entrega, métodos de pago, impuestos, avisos al
+  propietario y textos legales.
+
+--- GRUPO "FASE FINAL" ---
+
+4.17 CONEXIÓN CON EL TPV (ver apartado 8 completo)
+
+---------------------------------------------------------------------
+5. FLUJOS CLAVE: CÓMO FUNCIONA EN LA PRÁCTICA
+---------------------------------------------------------------------
+[VISUAL: cada flujo como diagrama de pasos con iconos]
+
+5.1 Una familia compra la lista del colegio
+ Familia elige colegio y curso > revisa la lista y cambia lo que quiera
+ > paga > la Nave o la tienda elegida recibe el pedido en "Preparación"
+ > el almacén lo prepara > el cliente recibe aviso por WhatsApp y email
+ > recoge o recibe en el colegio.
+
+5.2 Llega la lista de un colegio nuevo
+ El colegio envía un PDF o Excel > se sube en "Colegios y listas" > el
+ sistema reconoce y empareja los artículos > el propietario revisa >
+ publica > se envía el enlace/QR al AMPA > las familias ya pueden pedir.
+
+5.3 Se acaba un producto
+ El stock baja del mínimo > aparece en el panel de control y en alertas
+ > "Reposición sugerida" calcula cuánto pedir > se envía el pedido al
+ proveedor > al recibirlo se suma al stock de la ubicación elegida.
+
+5.4 Una empresa hace un pedido recurrente
+ La empresa entra con su tarifa > pega su lista de referencias en
+ "Pedido rápido" > factura con pago a 30 días > el panel avisa si
+ una factura vence.
+
+5.5 Cierre de trimestre
+ Un clic en "Enviar a la gestoría" > facturas + libro + IVA listos.
+
+---------------------------------------------------------------------
+6. VENTAJAS PARA CADA PERSONA
+---------------------------------------------------------------------
+PROPIETARIO: ve todo el negocio en una pantalla, decide con datos,
+  controla el stock de las tres ubicaciones, ahorra horas de
+  administración.
+ENCARGADOS DE TIENDA: saben qué hay en su tienda y en las demás, piden
+  traslados, atienden mejor.
+ALMACÉN: pantalla de preparación clara, sin papeles ni errores.
+GESTORÍA: recibe facturas e IVA ordenados, sin pedirlos.
+FAMILIAS: comprar la lista del colegio en minutos, recoger sin colas.
+EMPRESAS: pedir rápido, tarifa propia, factura a 30 días.
+
+---------------------------------------------------------------------
+7. SEGURIDAD Y CUMPLIMIENTO (EN LA VERSIÓN REAL)
+---------------------------------------------------------------------
+- Pagos con pasarela certificada: los datos de la tarjeta nunca pasan
+  por la web ni se guardan.
+- Conexión cifrada (HTTPS), copias de seguridad diarias.
+- Permisos por rol y registro de actividad.
+- RGPD: consentimiento de cookies y marketing, política de privacidad,
+  derecho de acceso y borrado de datos.
+- Textos legales (aviso legal, cookies, condiciones, devoluciones)
+  editables desde el panel.
+
+---------------------------------------------------------------------
+8. OPCIÓN ESTRELLA: CONEXIÓN CON EL TPV DE LAS TIENDAS
+   (CONTROL TOTAL DEL STOCK EN LAS 3 UBICACIONES Y LA WEB)
+---------------------------------------------------------------------
+[ESTE APARTADO DEBE OCUPAR VARIAS PÁGINAS Y SER MUY VISUAL]
+
+8.1 LA SITUACIÓN DE HOY
+Las tiendas ya tienen un programa de caja (TPV) donde se escanea el
+código de barras de cada artículo, está el precio de cada producto y se
+dan de alta productos nuevos. Eso funciona bien dentro de cada tienda,
+pero la información queda "aislada":
+- La web no sabe lo que se vende en las tiendas, así que puede vender
+  algo que ya no queda.
+- Las tiendas no saben qué hay en las otras ni en la Nave.
+- Hay que dar de alta los productos dos veces (en caja y en la web).
+- Los cambios de precio hay que hacerlos en varios sitios.
+
+8.2 LA IDEA
+Conectar el programa de caja de las tres ubicaciones con la web y el
+panel, de forma que TODO sea un único sistema de stock y precios.
+
+[VISUAL: diagrama central]
+   Caja Tienda Centro ┐
+   Caja Tienda Plaza  ├──>  NÚCLEO DE STOCK Y PRECIOS  <──> Tienda online
+   Caja Nave          ┘                (un solo cerebro)  <──> Panel de gestión
+
+Cada vez que ocurre algo en cualquier sitio, todos los demás se enteran
+al instante:
+- Se vende un artículo en la Tienda Centro > baja el stock en la web y
+  en el panel.
+- Se vende en la web > se reserva ese artículo en la ubicación
+  correspondiente.
+- Entra mercancía en la Nave > sube el stock disponible en la web.
+- Se traslada mercancía de la Nave a la Tienda Plaza > cada ubicación
+  refleja su nueva cantidad.
+- Se cambia un precio (en caja o en el panel) > se actualiza en todas
+  partes.
+
+8.3 QUÉ PUEDE HACER EL PROPIETARIO CON ESTO
+a) VER DÓNDE ESTÁ CADA COSA. Escaneas un código de barras y aparece el
+   producto con su foto, precio y las unidades que hay en Tienda Centro,
+   Tienda Plaza y la Nave. Sin llamar por teléfono a nadie.
+b) DAR DE ALTA PRODUCTOS NUEVOS UNA SOLA VEZ. Se escanea el código de
+   barras; si no existe, se escribe nombre y precio, y el producto queda
+   creado en caja, en el panel y en la web (como borrador, para añadirle
+   foto y descripción después).
+c) NO VENDER LO QUE NO HAY. La web solo ofrece lo que realmente queda,
+   y puede indicar "Quedan 3 en Tienda Plaza". Se acabaron las ventas
+   online de productos agotados.
+d) REPONER A TIEMPO. Las alertas de stock bajo salen de las ventas reales
+   de las tres ubicaciones, y el panel propone cuánto pedir al
+   proveedor.
+e) TRASLADAR CON CRITERIO. Si falta algo en la Tienda Centro y hay 40 en
+   la Nave, el sistema lo detecta y propone el traslado.
+f) RECOGIDA EN TIENDA FIABLE. Cuando un cliente elige recoger en una
+   tienda, la web comprueba que esa tienda tiene los artículos o avisa
+   de cuánto tardarán en llegar.
+g) UN ÚNICO PRECIO. Cambiar un precio una vez lo cambia en caja, en el
+   panel y en la web.
+h) INFORMES REALES. Ventas, márgenes y rotación sumando tiendas y web,
+   por ubicación y por categoría.
+i) INVENTARIO MÁS RÁPIDO. Contar con la pistola o el terminal de mano y
+   que las diferencias se corrijan solas.
+j) FACTURAS Y CLIENTES UNIFICADOS (según el programa de caja): una venta
+   en tienda o en la web queda en el mismo historial.
+
+8.4 QUÉ SE SINCRONIZA Y EN QUÉ DIRECCIÓN
+[VISUAL: tabla con flechas]
+- Stock (ventas, entradas, traslados, mermas) ........ Caja <-> Web/Panel
+- Precios y ofertas ................................... Caja <-> Web/Panel
+- Altas de productos nuevos ........................... Caja -> Web (borrador)
+- Fotos y descripciones ............................... Web/Panel -> Caja
+- Pedidos web recogidos en tienda ..................... Web -> Caja
+- Clientes y facturas ................................. Web <-> Caja (según programa)
+
+8.5 PANTALLA DE DEMOSTRACIÓN (YA EN EL PANEL)
+En el menú, grupo "Fase final", está "Conexión con el TPV". Incluye:
+- Estado de las tres ubicaciones y de la web ("Conectado /
+  Sincronizado").
+- Diagrama de cómo se conecta todo.
+- PRUEBA DEL ESCÁNER: se escribe o escanea un código de barras. Si
+  existe, muestra producto, precio y stock por tienda. Si no existe,
+  ofrece darlo de alta en segundos.
+- Actividad en vivo: lista de lo que va ocurriendo (ventas, altas,
+  recepciones, cambios de precio) y su resultado.
+- Qué se sincroniza y qué hace falta para ponerlo en marcha.
+[Aclarar en el PDF: esta pantalla es demostrativa, con datos de
+ejemplo; la conexión real se instala al final.]
+
+8.6 QUÉ HACE FALTA PARA PONERLO EN MARCHA
+1. Saber qué programa de caja/TPV usan hoy las tiendas.
+2. Comprobar cómo permite conectarse (conexión directa, base de datos
+   o ficheros exportables).
+3. Una jornada de puesta en marcha y prueba con unos pocos artículos.
+4. Formación breve al equipo (un rato por tienda).
+Plan B si el programa no permite conexión directa: carga automática
+programada por fichero (por ejemplo cada pocos minutos) para que el
+stock y los precios sigan unificados con un pequeño retraso.
+
+8.7 CUÁNDO SE HACE
+Al final y solo cuando el propietario haya aprobado la web y el panel.
+Así se construye primero lo que se ve y se usa a diario, y se conecta el
+TPV con la tienda ya validada. Se puede hacer por fases: primero stock de
+una tienda, después las demás, después precios y altas.
+
+8.8 RESUMEN EN UNA FRASE
+"Un solo sistema para tres ubicaciones y la web: lo que se vende en
+cualquier sitio se resta en todos, y tú ves dónde está cada cosa desde
+el móvil."
+
+---------------------------------------------------------------------
+9. PREGUNTAS FRECUENTES (PARA UNA PÁGINA FINAL)
+---------------------------------------------------------------------
+- ¿Los clientes tienen que crear cuenta para comprar? No: pueden comprar
+  como invitados. La cuenta añade ventajas (hijos, repetir pedido,
+  facturas).
+- ¿Puedo cambiar la portada y las ofertas yo mismo? Sí, desde
+  "Marketing y portada" y "Promociones".
+- ¿Y si un colegio cambia su lista? Se edita en "Colegios y listas" y
+  las familias que la tenían guardada reciben aviso.
+- ¿Puedo dar acceso a mis empleados sin que lo vean todo? Sí, con roles
+  y permisos; además queda un registro de actividad.
+- ¿Sirve para vender a empresas con otros precios? Sí: tarifas por
+  cliente, pedido rápido y factura a 30 días.
+- ¿Y si no tengo conexión con el TPV todavía? El stock puede gestionarse
+  manualmente desde el panel (ya funciona en la demo) y conectarse
+  después.
+- ¿Se puede usar desde el móvil? Sí, tanto la tienda como el panel se
+  adaptan al móvil.
+
+---------------------------------------------------------------------
+10. HOJA DE RUTA Y PRÓXIMOS PASOS
+---------------------------------------------------------------------
+[VISUAL: línea de tiempo con 5 fases]
+
+FASE 1 · DEMOSTRACIÓN (ya hecha)
+  Tienda y panel completos y navegables con datos de ejemplo.
+FASE 2 · AJUSTES TRAS TU VISTO BUENO
+  Cambios de diseño, textos, colores, categorías y funciones que
+  quieras añadir o quitar.
+FASE 3 · BASE DE DATOS Y FUNCIONAMIENTO REAL
+  Productos, clientes, pedidos y stock reales; carga del catálogo;
+  cuentas de usuario; avisos por correo y WhatsApp.
+FASE 4 · PAGOS Y PUESTA EN MARCHA
+  Pasarela de pago (tarjeta, Bizum, PayPal), facturas reales, dominio,
+  formación al equipo y lanzamiento.
+FASE 5 · CONEXIÓN CON EL TPV (OPCIONAL, DESPUÉS DE APROBAR)
+  Stock y precios unificados en las tres ubicaciones y la web (apartado
+  8).
+
+Siguiente paso inmediato: recorrer juntos la demostración (tienda y
+panel), anotar qué cambiarías y confirmar qué programa de caja usan hoy
+las tiendas para planificar la fase final.
+
+=====================================================================
+FIN DEL DOCUMENTO
+=====================================================================

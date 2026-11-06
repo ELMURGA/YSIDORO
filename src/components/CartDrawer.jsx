@@ -1,4 +1,6 @@
-export default function CartDrawer({ cart, isOpen, onClose, onUpdateQty, onRemoveItem, onCheckout, totalPrice }) {
+export default function CartDrawer({ cart, isOpen, onClose, onUpdateQty, onRemoveItem, onCheckout, totalPrice, onShopMore }) {
+  const FREE = 49;
+  const missing = Math.max(0, FREE - totalPrice);
   return (
     <div
       className={`cart-backdrop ${isOpen ? 'active' : ''}`}
@@ -62,14 +64,26 @@ export default function CartDrawer({ cart, isOpen, onClose, onUpdateQty, onRemov
           )}
         </div>
 
+        {cart.length > 0 && (
+          <div className={`sh-ship ${missing === 0 ? 'ok' : ''}`}>
+            {missing === 0 ? (
+              <><i className="fa-solid fa-circle-check" style={{ color: 'var(--success)' }} /> ¡Tienes <b>envío gratis</b>!</>
+            ) : (
+              <>Te faltan <b>{missing.toFixed(2)} €</b> para el envío gratis</>
+            )}
+            <div className="sh-progress"><div style={{ width: `${Math.min(100, (totalPrice / FREE) * 100)}%` }} /></div>
+          </div>
+        )}
+
         <div className="cart-footer">
           <div className="cart-subtotal-row">
             <span className="subtotal-label">Subtotal (con IVA):</span>
             <span className="subtotal-val">{totalPrice.toFixed(2)} €</span>
           </div>
           <button className="checkout-btn" disabled={cart.length === 0} onClick={onCheckout}>
-            Tramitar Pedido <i className="fa-solid fa-arrow-right" style={{ marginLeft: 8 }} />
+            Ir a pagar <i className="fa-solid fa-arrow-right" style={{ marginLeft: 8 }} />
           </button>
+          <button type="button" className="sh-btn ghost small block" style={{ marginTop: 8 }} onClick={onShopMore}>Seguir comprando</button>
         </div>
       </aside>
     </div>

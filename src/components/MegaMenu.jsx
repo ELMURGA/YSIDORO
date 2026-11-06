@@ -52,7 +52,7 @@ export default function MegaMenu({ categories, onSelectCategory, onSelectSubcate
                 document.getElementById('material-finder')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <i className="fa-solid fa-book-open-reader" /> Libros &amp; Material por Colegios
+              <i className="fa-solid fa-book-open-reader" /> Libros &amp; Material<span className="nav-school-extra"> por Colegios</span>
             </a>
           </li>
         </ul>

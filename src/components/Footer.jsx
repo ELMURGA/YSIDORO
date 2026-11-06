@@ -1,4 +1,4 @@
-export default function Footer({ onNavigate }) {
+export default function Footer({ onNavigate, onGo }) {
   function go(pageKey) {
     return (e) => {
       e.preventDefault();
@@ -37,7 +37,13 @@ export default function Footer({ onNavigate }) {
           <h5>Servicios</h5>
           <ul className="footer-links">
             <li>
-              <a href="#" onClick={go('compra-rapida')}>Compra Rápida</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); onGo('business'); }}>Compra Rápida y Empresas</a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); onGo('tracking'); }}>Seguir mi pedido</a>
+            </li>
+            <li>
+              <a href="#" onClick={(e) => { e.preventDefault(); onGo('stores'); }}>Nuestras tiendas</a>
             </li>
             <li>
               <a href="#" onClick={go('garantias')}>Garantías</a>
