@@ -14,7 +14,7 @@ export default function DetailView({ product, onBack, onAddToCart, onSelectProdu
   const isOut = product.stock === 'out-of-stock';
   const basePrice = product.price / 1.21;
   const full = ADMIN_PRODUCTS.find((p) => p.id === product.id);
-  const related = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const related = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id && p.stock === 'in-stock').slice(0, 4);
   const cls = (n) => (n === 0 ? 'no' : n < 5 ? 'low' : 'ok');
 
   return (

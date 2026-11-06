@@ -100,19 +100,19 @@ export const SCHOOLS_DATA = {
 // Cada línea: { need: <necesidad genérica>, suggestedId: <producto oficial/sugerido> }
 export const COURSE_MATERIAL_LISTS = {
   'Infantil 3 Años': [
-    { need: 'Plastilina blanda de colores', suggestedId: '2320407' },
-    { need: 'Témperas escolares lavables', suggestedId: '2320441' },
-    { need: 'Tijeras de punta redonda', suggestedId: '2320136' },
+    { need: 'Plastilina blanda de colores', suggestedId: '2301376' },
+    { need: 'Témperas escolares lavables', suggestedId: '2300434' },
+    { need: 'Tijeras de punta redonda', suggestedId: '2300693' },
   ],
   'Infantil 4 Años': [
     { need: 'Bloc de dibujo/manualidades', suggestedId: '2313739' },
-    { need: 'Pegamento de barra', suggestedId: '2320078' },
-    { need: 'Plastilina blanda de colores', suggestedId: '2320407' },
+    { need: 'Pegamento de barra', suggestedId: '2301028' },
+    { need: 'Plastilina blanda de colores', suggestedId: '2301376' },
   ],
   'Infantil 5 Años': [
     { need: 'Cuadernillo de operaciones (sumas)', suggestedId: '2309352' },
     { need: 'Goma de borrar', suggestedId: '2300256' },
-    { need: 'Témperas escolares lavables', suggestedId: '2320441' },
+    { need: 'Témperas escolares lavables', suggestedId: '2300434' },
   ],
   '1º de Primaria': [
     { need: 'Masilla adhesiva reposicionable', suggestedId: '2349423' },
@@ -131,18 +131,18 @@ export const COURSE_MATERIAL_LISTS = {
   ],
   '4º de Primaria': [
     { need: 'Bolígrafo de tinta líquida/gel', suggestedId: '2300891' },
-    { need: 'Goma de borrar', suggestedId: '2311098' },
+    { need: 'Goma de borrar', suggestedId: '2380041' },
     { need: 'Rotulador de punta cónica', suggestedId: '2300858' },
   ],
   '5º de Primaria': [
-    { need: 'Bolígrafo de tinta normal', suggestedId: '2320011' },
-    { need: 'Estuche portatodos', suggestedId: '2320238' },
-    { need: 'Rotulador fluorescente', suggestedId: '2320045' },
+    { need: 'Bolígrafo de tinta normal', suggestedId: '2300315' },
+    { need: 'Estuche portatodos', suggestedId: '2402326' },
+    { need: 'Rotulador fluorescente', suggestedId: '2359447' },
   ],
   '6º de Primaria': [
-    { need: 'Cuaderno con separadores', suggestedId: '2320271' },
-    { need: 'Diccionario escolar', suggestedId: '2320373' },
-    { need: 'Tijeras de punta redonda', suggestedId: '2320136' },
+    { need: 'Cuaderno con separadores', suggestedId: '2374577' },
+    { need: 'Diccionario escolar', suggestedId: '2352156' },
+    { need: 'Tijeras de punta redonda', suggestedId: '2300693' },
   ],
   '1º de ESO': [
     { need: 'Mochila escolar', suggestedId: '2436030' },
@@ -155,23 +155,23 @@ export const COURSE_MATERIAL_LISTS = {
     { need: 'Bloc de dibujo/manualidades', suggestedId: '2313739' },
   ],
   '3º de ESO': [
-    { need: 'Rotulador fluorescente', suggestedId: '2320045' },
-    { need: 'Estuche portatodos', suggestedId: '2320238' },
-    { need: 'Cuaderno con separadores', suggestedId: '2320271' },
+    { need: 'Rotulador fluorescente', suggestedId: '2359447' },
+    { need: 'Estuche portatodos', suggestedId: '2402326' },
+    { need: 'Cuaderno con separadores', suggestedId: '2374577' },
   ],
   '4º de ESO': [
-    { need: 'Diccionario escolar', suggestedId: '2320373' },
+    { need: 'Diccionario escolar', suggestedId: '2352156' },
     { need: 'Bolígrafo de tinta líquida/gel', suggestedId: '2300891' },
-    { need: 'Cuaderno con separadores', suggestedId: '2320271' },
+    { need: 'Cuaderno con separadores', suggestedId: '2374577' },
   ],
   '1º de Bachillerato': [
-    { need: 'Cuaderno con separadores', suggestedId: '2320271' },
-    { need: 'Bolígrafo de tinta normal', suggestedId: '2320011' },
-    { need: 'Rotulador fluorescente', suggestedId: '2320045' },
+    { need: 'Cuaderno con separadores', suggestedId: '2374577' },
+    { need: 'Bolígrafo de tinta normal', suggestedId: '2300315' },
+    { need: 'Rotulador fluorescente', suggestedId: '2359447' },
   ],
   '2º de Bachillerato': [
-    { need: 'Diccionario escolar', suggestedId: '2320373' },
-    { need: 'Cuaderno con separadores', suggestedId: '2320271' },
-    { need: 'Estuche portatodos', suggestedId: '2320238' },
+    { need: 'Diccionario escolar', suggestedId: '2352156' },
+    { need: 'Cuaderno con separadores', suggestedId: '2374577' },
+    { need: 'Estuche portatodos', suggestedId: '2402326' },
   ],
 };

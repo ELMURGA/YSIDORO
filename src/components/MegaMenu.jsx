@@ -19,8 +19,8 @@ export default function MegaMenu({ categories, onSelectCategory, onSelectSubcate
                 className="mega-menu-panel"
                 style={cat.columns.length <= 3 ? { gridTemplateColumns: 'repeat(3, 1fr)' } : undefined}
               >
-                {cat.columns.map((col) => (
-                  <div key={col.title}>
+                {cat.columns.map((col, ci) => (
+                  <div key={`${col.title}-${ci}`}>
                     <h4 className="mega-menu-col-title">{col.title}</h4>
                     <ul className="mega-menu-list">
                       {col.items.map((item) => (

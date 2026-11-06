@@ -1,7 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ProductCard from './ProductCard.jsx';
 import SchoolListResult from './SchoolListResult.jsx';
 import { PRODUCTS, searchProducts } from '../data/products.js';
+
+const PAGE_SIZE = 60;
 
 export default function CatalogView({
   searchQuery,
@@ -12,10 +14,11 @@ export default function CatalogView({
   onAddToCart,
   onAddMany,
 }) {
-  const [stockFilters, setStockFilters] = useState(['in-stock']);
+  const [stockFilters, setStockFilters] = useState(['in-stock', 'out-of-stock']);
   const [priceFilters, setPriceFilters] = useState([]);
   const [sortValue, setSortValue] = useState('relevance');
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
   function toggleStock(value) {
     setStockFilters((prev) => (prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]));
@@ -35,10 +38,10 @@ export default function CatalogView({
     } else if (activeCategory) {
       if (activeSubcategory) {
         heading = activeSubcategory;
-        list = list.filter((p) => p.category === activeSubcategory);
+        list = list.filter((p) => p.categories.includes(activeSubcategory));
       } else {
         heading = activeCategory;
-        list = list.filter((p) => p.parentCategory === activeCategory);
+        list = list.filter((p) => p.parentCategories.includes(activeCategory));
       }
     }
 
@@ -68,6 +71,10 @@ export default function CatalogView({
     }
 
     return { title: heading, results: list };
+  }, [searchQuery, activeCategory, activeSubcategory, stockFilters, priceFilters, sortValue]);
+
+  useEffect(() => {
+    setVisible(PAGE_SIZE);
   }, [searchQuery, activeCategory, activeSubcategory, stockFilters, priceFilters, sortValue]);
 
   return (
@@ -168,9 +175,16 @@ export default function CatalogView({
               </div>
             ) : (
               <div className="products-grid">
-                {results.map((prod) => (
+                {results.slice(0, visible).map((prod) => (
                   <ProductCard key={prod.id} product={prod} onSelect={onSelectProduct} onAddToCart={onAddToCart} />
                 ))}
+              </div>
+            )}
+            {results.length > visible && (
+              <div style={{ textAlign: 'center', margin: '28px 0 8px' }}>
+                <button type="button" className="hero-btn" onClick={() => setVisible((v) => v + PAGE_SIZE)}>
+                  Mostrar más ({results.length - visible} restantes)
+                </button>
               </div>
             )}
           </section>
